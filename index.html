@@ -1,1 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola, Licenciada Liz</title>
+    <link rel="icon" href="IMG/favicon.png" type="image/png">
 
+</head>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+
+    background-image:url("IMG/fondo.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    text-align:center;
+    width:90%;
+    max-width:450px;
+}
+
+h1{
+    color:#333;
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.heart{
+    color:#ff4d6d;
+}
+
+.gif-container{
+    margin-bottom:20px;
+    height:250px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.gif-container img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:10px;
+}
+
+.btn-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:20px;
+    position:relative;
+    height:50px;
+}
+
+button{
+    padding:10px 25px;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+#btn-si{
+    background-color:#4cc9f0;
+    color:white;
+    transition:0.2s;
+}
+
+#btn-si:hover{
+    transform:scale(1.05);
+}
+
+#btn-no{
+    background-color:#ff4d6d;
+    color:white;
+    position:absolute;
+    left:55%;
+    top:0;
+}
+
+.message{
+    margin-top:15px;
+    font-size:20px;
+    color:#666;
+    font-style:italic;
+    min-height:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1 id="title">
+        ¿Quieres salir conmigo?
+        <span class="heart">❤</span>
+    </h1>
+
+    <div class="gif-container">
+<img id="gif" src="IMG/perritos.jpg" alt="Ositos tiernos">
+    </div>
+
+    <div class="btn-container" id="buttons-section">
+        <button id="btn-si">¡Sí!</button>
+        <button id="btn-no">No</button>
+    </div>
+
+    <p class="message" id="sub-message"></p>
+
+</div>
+
+<script>
+
+const btnNo = document.getElementById("btn-no");
+const btnSi = document.getElementById("btn-si");
+const messageText = document.getElementById("sub-message");
+const gifImg = document.getElementById("gif");
+const titleText = document.getElementById("title");
+const btnContainer = document.getElementById("buttons-section");
+
+const frases = [
+    "¿Segura? 🤔",
+    "Piénsalo otra vez 😢",
+    "Vamos, ándale 🥺",
+    "Tus perritos quieren que vayas 🐶",
+    "Me romperás el corazón 💔",
+    "Eres cruel 😭"
+];
+
+let clickCount = 0;
+
+function moverBotonNo() {
+
+    if (clickCount < frases.length) {
+        messageText.textContent = frases[clickCount];
+        clickCount++;
+    } else {
+        messageText.textContent = frases[frases.length - 1];
+    }
+
+    const maxX = window.innerWidth - btnNo.offsetWidth;
+    const maxY = window.innerHeight - btnNo.offsetHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    btnNo.style.position = "fixed";
+    btnNo.style.left = randomX + "px";
+    btnNo.style.top = randomY + "px";
+}
+
+btnNo.addEventListener("mouseenter", moverBotonNo);
+
+btnNo.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moverBotonNo();
+});
+
+btnSi.addEventListener("click", () => {
+
+    titleText.innerHTML =
+        "¡Perfecto! Vamos al TOPGOLF <span style='color:black'>🖤</span>";
+
+    gifImg.src = "IMG/topgolf.jpg";
+
+    messageText.textContent =
+        "Ya te quiero ver 😎🏌️";
+
+    messageText.style.color = "#333";
+    messageText.style.fontWeight = "bold";
+
+    btnContainer.style.display = "none";
+});
+
+</script>
+
+</body>
+</html>
