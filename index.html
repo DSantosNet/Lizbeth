@@ -39,6 +39,20 @@ body{
     max-width:450px;
 }
 
+.link-resaltado {
+    color: inherit;            
+    text-decoration: none;     
+    transition: all 0.3s ease;
+}
+
+.link-resaltado:hover {
+    color: #0056b3;            
+    text-decoration: underline; 
+    cursor: pointer;          
+}
+
+
+    
 h1{
     color:#333;
     font-size:24px;
@@ -180,13 +194,11 @@ btnNo.addEventListener("touchstart", function(e){
 
 btnSi.addEventListener("click", () => {
 
-    titleText.innerHTML =
-        "¡Perfecto! Vamos al TOPGOLF <span style='color:black'>🖤</span>";
+    titleText.innerHTML = '<a href="index2.html" class="link-resaltado">¡Perfecto! Vamos al TOPGOLF <span style="color:black">🖤</span></a>';
 
     gifImg.src = "IMG/topgolf.jpg";
 
-    messageText.textContent =
-        "Ya te quiero ver 😎🏌️";
+messageText.innerHTML = '<a href="index2.html" class="link-resaltado"">Ya te quiero ver 😎🏌️👈</a>';
 
     messageText.style.color = "#333";
     messageText.style.fontWeight = "bold";
