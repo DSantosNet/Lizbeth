@@ -128,83 +128,25 @@ button{
 <div class="card">
 
     <h1 id="title">
-        ¿Quieres salir conmigo?
-        <span class="heart">❤</span>
+        ¡Feliz cumpleaños! dudo que lo veas vdd.
     </h1>
-
+<p>
+     Pero de corazón espero que sea un buen día y que siempre los tengas. 
+     Ojalá encuentres lo que buscas; 
+     intenté dar todo esta vez y creo que no funcionó. 
+     Había mucho que me quedé con ganas de decirte y preguntarte. 
+     ¡No vuelvo a programar gratis, jajaja!
+</p>
+</br>
     <div class="gif-container">
 <img id="gif" src="IMG/perritos.jpg" alt="Ositos tiernos">
     </div>
 
-    <div class="btn-container" id="buttons-section">
-        <button id="btn-si">¡Sí!</button>
-        <button id="btn-no">No</button>
-    </div>
 
-    <p class="message" id="sub-message"></p>
 
 </div>
 
-<script>
 
-const btnNo = document.getElementById("btn-no");
-const btnSi = document.getElementById("btn-si");
-const messageText = document.getElementById("sub-message");
-const gifImg = document.getElementById("gif");
-const titleText = document.getElementById("title");
-const btnContainer = document.getElementById("buttons-section");
-
-const frases = [
-    "¿Segura? 🤔",
-    "Piénsalo otra vez 😢",
-    "Vamos, ándale 🥺",
-    "Tus perritos quieren que vayas 🐶",
-    "Me romperás el corazón 💔",
-    "Eres cruel 😭"
-];
-
-let clickCount = 0;
-
-function moverBotonNo() {
-
-    if (clickCount < frases.length) {
-        messageText.textContent = frases[clickCount];
-        clickCount++;
-    } else {
-        messageText.textContent = frases[frases.length - 1];
-    }
-
-    const maxX = window.innerWidth - btnNo.offsetWidth;
-    const maxY = window.innerHeight - btnNo.offsetHeight;
-
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-
-    btnNo.style.position = "fixed";
-    btnNo.style.left = randomX + "px";
-    btnNo.style.top = randomY + "px";
-}
-
-btnNo.addEventListener("mouseenter", moverBotonNo);
-
-btnNo.addEventListener("touchstart", function(e){
-    e.preventDefault();
-    moverBotonNo();
-});
-
-btnSi.addEventListener("click", () => {
-
-    titleText.innerHTML = '<a href="index2.html" class="link-resaltado">¡Perfecto! Vamos al TOPGOLF <span style="color:black">🖤</span></a>';
-
-    gifImg.src = "IMG/topgolf.jpg";
-
-messageText.innerHTML = '<a href="index2.html" class="link-resaltado"">Ya te quiero ver 😎🏌️👈</a>';
-
-    messageText.style.color = "#333";
-    messageText.style.fontWeight = "bold";
-
-    btnContainer.style.display = "none";
-});
 
 </script>
 
